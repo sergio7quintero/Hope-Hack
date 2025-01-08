@@ -37,6 +37,121 @@ header {
     border-radius: 4px;
 }
 
+/*our team css*/
+
+.container {
+    padding-top: 100px;
+}
+
+.hover-container {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-tooltip {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background for tooltip */
+    color: #fff; /* White text for contrast */
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out; 
+    z-index: 10;
+}
+
+.hover-container:hover .custom-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.team-heading {
+    font-family: 'Poppins', sans-serif; 
+    font-size: 3rem; 
+    font-weight: 700; 
+    color: #333; 
+    text-align: center;
+    margin-bottom: 50px; 
+    letter-spacing: 1px; 
+    text-transform: uppercase; 
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2); 
+}
+
+.shirt-img {
+    max-width: 100%;
+    width: 350px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px; 
+}
+
+.shirt-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 20px 30px 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center; 
+    max-width: 370px;
+}
+
+.team-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #222; 
+    margin: 10px 0; 
+    text-transform: capitalize;
+    letter-spacing: 0.5px; 
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.quote {
+    margin-top: 0;
+    font-style: italic;
+    color: #555; 
+    font-size: 1rem; 
+    text-wrap: auto;
+}
+
+.top-row, .bottom-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap; 
+}
+
+
+@media (max-width: 768px) {
+    .shirt-img {
+        width: 200px;
+    }
+
+    .items {
+        margin: 20px 10px;
+        padding: 15px;
+        max-width: 50%; 
+        width: auto; 
+    }
+
+    .quote {
+        font-size: 0.9rem;
+    }
+}
 /* frequently asked questions */
 section {
     padding: 40px 20px;
@@ -97,8 +212,8 @@ section {
 }
 
 .accordian input:checked ~ .content {
-    max-height: 200px; /* Set a height large enough for the content */
-    padding: 15px 20px; /* Add padding when visible */
+    max-height: 200px; 
+    padding: 15px 20px; 
 }
 
 .accordian .content p {
@@ -106,97 +221,40 @@ section {
     line-height: 1.5;
 }
 
-/* Contact us info */
+/* Styling for Contact Us Section */
 .our-contact-info {
-    background-color: #f0f0f0; /* Light background color for the section */
+    background-color: #f0f0f0;
     padding: 50px 20px;
-    text-align: center;
-    border-top: 2px solid #ddd; /* Adds a subtle divider */
+    text-align: center; 
+    border-top: 2px solid #ddd;
 }
 
 .contact-container {
-    max-width: 600px; /* Limits the width for better readability */
-    margin: 0 auto;
+    max-width: 600px;
+    margin: 0 auto; 
 }
 
 .our-contact-info h2 {
     font-size: 2rem;
-    margin-bottom: 20px;
-    color: #333; /* Darker text color for better contrast */
+    margin-bottom: 20px; 
+    color: #333; 
+    font-weight: bold; 
 }
 
 .contact-detail {
-    font-size: 1.2rem;
-    color: #555; /* Neutral text color */
-    margin: 10px 0;
+    font-size: 1.2rem; 
+    color: #555; 
+    margin: 10px 0; 
 }
 
 .contact-detail a {
-    color: #007BFF; /* Blue color for links */
-    text-decoration: none;
+    color: #007BFF; 
+    text-decoration: none; 
 }
 
 .contact-detail a:hover {
-    text-decoration: underline; /* Underline effect on hover for links */
-}
-
-/* Our Team */
-.container {
-    padding-top: 100px;
-}
-
-.shirt-img {
-    max-width: 100%;
-    width: 350px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 8px; /* Adds rounded corners to the image */
-}
-
-.shirt-img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.items {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 40px 20px 30px 20px;
-    padding: 20px;
-    background-color: #f9f9f9; /* Card background color */
-    border-radius: 10px; /* Rounded corners for the card */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for the card */
-    text-align: center; /* Centers text and images inside the card */
-}
-
-.quote {
-    margin-top: 15px;
-    font-style: italic; /* Gives the quote a distinct look */
-    color: #555; /* Neutral text color for the quote */
-    font-size: 1rem; /* Adjust font size for readability */
-}
-
-.top-row, .bottom-row {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-    flex-wrap: wrap; /* Ensures wrapping for responsiveness */
-}
-
-@media (max-width: 768px) {
-    .shirt-img {
-        width: 200px;
-    }
-
-    .items {
-        margin: 20px 10px;
-        padding: 15px;
-    }
-
-    .quote {
-        font-size: 0.9rem;
-    }
+    text-decoration: underline; 
+    color: #0056b3; 
 }
 
 /* footer css below */
