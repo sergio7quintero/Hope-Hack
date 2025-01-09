@@ -1,45 +1,12 @@
-{{! <html lang="en"> }}
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resource Search</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="/data.css" />
-</head>
-<body>
-  <h1>Find Resources</h1>
-  <form id="search-container">
-    <input id = "city"
-      type="text"
-      class="search-bar"
-      placeholder="City"
-    />
-    <input id = "state"
-      type="text"
-      class="search-bar"
-      placeholder="State"
-    />
-    <input class="search-button" type="submit">Search</input>
-    <div id="results">
-      <div class="result-item">Resource 1: Description here</div>
-      <div class="result-item">Resource 2: Description here</div>
-      <div class="result-item">Resource 3: Description here</div>
-    </div>
-  </form>
-  {{!-- <script src="/Datapage/frontend/public/script.js"></script> --}}
-  <script>
-  document
-  .getElementById("search-container")
+document
+  .getElementsByClassName("search-container")
   .addEventListener("submit", async (event) => {
+    console.log("testing");
     event.preventDefault();
 
     const city = document.getElementById("city").value.trim();
     const state = document.getElementById("state").value.trim();
     const resultsDiv = document.getElementById("results");
-
 
     // Clear previous results
     resultsDiv.innerHTML = "";
@@ -82,6 +49,3 @@
       resultsDiv.innerHTML = `<p>Error fetching data. Please try again later.</p>`;
     }
   });
-</script>
-</body>
-{{! </html> }}
