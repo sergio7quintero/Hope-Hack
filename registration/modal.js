@@ -1,8 +1,8 @@
 document.querySelector('#show-login').addEventListener('click',function(){
-    document.querySelector('.popup').classList.add('active');
+    document.querySelector('.loginform').classList.add('active');
 });
-document.querySelector('.popup .close-btn').addEventListener('click',function(){
-    document.querySelector('.popup').classList.remove('active');
+document.querySelector('.loginform .close-btn').addEventListener('click',function(){
+    document.querySelector('.loginform').classList.remove('active');
 });
 
 
