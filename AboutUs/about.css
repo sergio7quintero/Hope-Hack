@@ -1,42 +1,127 @@
-body, ul, li {
-    margin: 0;
+* {
     padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-}
-
-header {
-    background-color: #333;
-}
-
-.navbar {
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 1rem;
-}
-
-.navbar li {
     margin: 0;
+    box-sizing: border-box;
 }
 
-.navbar a {
-    color: white;
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 40px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.logo {
+    color: rgb(0, 0, 0);
+    font-size: 2rem;
+}
+
+span{
+    color: #000000;
+}
+
+nav ul li{
+    list-style-type: none;
+    display: inline-block;
+    padding: 10% 20px;
+}
+
+nav ul li a {
+    color: rgb(0, 0, 0);
     text-decoration: none;
-    font-size: 1.2rem;
-    padding: 0.5rem 1rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight:  bold;
 }
 
-.navbar a:hover {
-    background-color: #555;
-    color: #fff;
-    border-radius: 4px;
+nav ul li a:hover{
+    color: #ea1538;
+    transition: .3s;
 }
 
+/*About header*/
+.about-header {
+    font-size: 60px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff; 
+    background-color: #000000;
+    padding: 90px 0;
+}
+
+.department {
+    width: 100%;
+    max-width: 200px;
+    padding: 12px 16px;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    appearance: none; 
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray"><path d="M7 10l5 5 5-5H7z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 10px) center;
+    background-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+/*Our goal css */
+.our-goal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fefefe;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    gap: 20px;
+}
+
+.text-content {
+    flex: 1;
+}
+
+.text-content h3 {
+    font-size: 2rem;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.text-content p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.text-content ul {
+    list-style-type: disc;
+    margin: 20px 0;
+    padding-left: 40px;
+}
+
+.text-content ul li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.happy-fam-pic {
+    flex: 1;
+    max-width: 400px;
+    text-align: center;
+}
+
+.happy-fam-pic img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@m
 /*our team css*/
 
 .container {
@@ -53,8 +138,8 @@ header {
     top: 90%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.8); /* Dark background for tooltip */
-    color: #fff; /* White text for contrast */
+    background-color: rgba(0, 0, 0, 0.8); 
+    color: #fff;
     padding: 5px 10px;
     border-radius: 4px;
     font-size: 0.9rem;
@@ -83,14 +168,14 @@ header {
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2); 
 }
 
-.shirt-img {
+.team-img {
     max-width: 100%;
     width: 350px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 8px; 
 }
 
-.shirt-img:hover {
+.team-img:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
@@ -137,7 +222,7 @@ header {
 
 
 @media (max-width: 768px) {
-    .shirt-img {
+    .team-img {
         width: 200px;
     }
 
@@ -155,7 +240,7 @@ header {
 /* frequently asked questions */
 section {
     padding: 40px 20px;
-    background-color: #f9f9f9; /* Light background for the section */
+    background-color: #f9f9f9;
 }
 
 #faq {
@@ -169,42 +254,42 @@ section {
 .accordian {
     list-style: none;
     padding: 0;
-    max-width: 700px; /* Limit the width for better readability */
-    margin: 0 auto; /* Center the accordion */
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 .accordian li {
     margin-bottom: 10px;
-    border: 1px solid #ddd; /* Border around each FAQ item */
-    border-radius: 8px; /* Rounded corners */
+    border: 1px solid #ddd;
+    border-radius: 8px; 
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .accordian label {
     display: block;
     padding: 15px 20px;
     font-size: 1.2rem;
-    color: #007BFF;
-    cursor: pointer; /* Pointer cursor to indicate interactivity */
+    color: #000000;
+    cursor: pointer;
     background: #fff;
     font-weight: bold;
-    transition: background 0.3s ease, color 0.3s ease; /* Smooth transition */
+    transition: background 0.3s ease, color 0.3s ease; 
 }
 
 .accordian label:hover {
-    background: #007BFF;
+    background: #909090;
     color: #fff;
 }
 
 .accordian input {
-    display: none; /* Hide the radio buttons */
+    display: none;
 }
 
 .accordian .content {
     max-height: 0;
     overflow: hidden;
-    background-color: #f4f4f4; /* Light gray for the content */
+    background-color: #f4f4f4;
     padding: 0 20px;
     font-size: 1rem;
     color: #555;
@@ -293,11 +378,13 @@ footer {
     margin-right: 15px;
 }
 
-.yuyiLogo {
-    width: 80px;
+.footer-logo {
+    max-width: 300px;
+    margin: 0;
+    padding: 0;
 }
 
-.wrapper .footer-widget .yuyiLogo {
+.wrapper .footer-widget .footer-logo {
     margin-bottom: 30px;
     vertical-align: middle;
 
@@ -325,7 +412,7 @@ footer {
     height: 44px;
     margin-right: 10px;
     color: white;
-    background-color: rgb(164, 0, 0);
+    background-color: #ea1538;
     border-radius: 50%;
     font-size: 28px;
     text-decoration: none;
@@ -336,7 +423,7 @@ footer {
 }
 
 .wrapper .footer-widget .socials li a:hover {
-    background-color: rgb(124, 124, 124);
+    background-color: rgb(133, 0, 0);
 }
 
 .wrapper .footer-widget h6{
