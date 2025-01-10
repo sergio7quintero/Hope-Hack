@@ -12,35 +12,43 @@ async function fetchData(city, state) {
       state: state,
     },
     headers: {
-      "x-rapidapi-key": `11885e9052msha6a3cda9c716efep1c12f9jsn62702adca62f`, // Use environment variable for security
+      "x-rapidapi-key": process.env.RAPIDAPI_KEY, // Use environment variable for security
       "x-rapidapi-host": "homeless-shelters-and-foodbanks-api.p.rapidapi.com",
     },
   };
 
   try {
     const response = await axios.request(options);
-    return {
-        response
-    //   name: response.data[1].name,
-    //   city: response.data[1].city,
-    //   state: response.data[1].state,
-    //   description: response.data[1].description,
-    //   type: response.data[1].type,
-    //   full_address: response.data[1].full_address,
-    //   phone_number: response.data[1].phone_number,
-    //   business_hours: response.data[1].business_hours,
-    };
+
+    // Check if response.data is an array
+    if (Array.isArray(response.data) && response.data.length > 0) {
+      // Map through the data and return the necessary fields for each item
+      return response.data.map((item) => ({
+        name: item?.name || "No name available",
+        city: item?.city || "No city available",
+        state: item?.state || "No state available",
+        description: item?.description || "No description available",
+        type: item?.type || "No type available",
+        full_address: item?.full_address || "No address available",
+        phone_number: item?.phone_number || "No phone number available",
+        business_hours: item?.business_hours || "No business hours available",
+      }));
+    } else {
+      console.error("Invalid data format or empty array", response.data);
+      return []; // Return an empty array if no valid data
+    }
   } catch (error) {
     console.error("Error fetching data:", error.message);
     if (error.response) {
       console.error("Status Code:", error.response.status);
       console.error("Response Data:", error.response.data);
     }
+    return []; // Return an empty array in case of error
   }
 }
 
 // Call the function
-fetchData(`charlotte`, `nc`).then((data) => console.log(data));
+// fetchData(`charlotte`, `nc`).then((data) => console.log(data));
 
 // request(options, function (error, response, body) {
 //   if (error) throw new Error(error);

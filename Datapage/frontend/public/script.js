@@ -1,7 +1,6 @@
 document
-  .getElementsByClassName("search-container")
+  .getElementById("search-container")
   .addEventListener("submit", async (event) => {
-    console.log("testing");
     event.preventDefault();
 
     const city = document.getElementById("city").value.trim();
@@ -23,29 +22,46 @@ document
           city
         )}&state=${encodeURIComponent(state)}`
       );
+
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`);
       }
 
       const data = await response.json();
 
-      // Validate data and display
-      if (data.error) {
-        resultsDiv.innerHTML = `<p>${data.error}</p>`;
-      } else {
-        resultsDiv.innerHTML = `
-          <p><strong>Name:</strong> ${data.name}</p>
-          <p><strong>City:</strong> ${data.city}</p>
-          <p><strong>State:</strong> ${data.state}</p>
-          <p><strong>Description:</strong> ${data.description}</p>
-          <p><strong>Type:</strong> ${data.type}</p>
-          <p><strong>Full Address:</strong> ${data.full_address}</p>
-          <p><strong>Phone Number:</strong> ${data.phone_number}</p>
-          <p><strong>Business Hours:</strong> ${data.business_hours}</p>
-        `;
+      console.log("API Response Data:", data); // <-- Log the response data
+
+      // Check if data is an empty array
+      if (!Array.isArray(data) || data.length === 0) {
+        resultsDiv.innerHTML = `<p>No resources found for the given location.</p>`;
+        return;
       }
+
+      // Iterate through each resource in the array
+      data.forEach((item, index) => {
+        console.log(`Item ${index}:`, item); // <-- Log each item for debugging
+
+        // Create a new div for each resource with class "result-item"
+        const resultItemDiv = document.createElement("div");
+        resultItemDiv.classList.add("result-item");
+
+        // Populate the div with the resource data
+        resultItemDiv.innerHTML = `
+          <p><strong>Name:</strong> ${item.name || "N/A"}</p>
+          <p><strong>City:</strong> ${item.city || "N/A"}</p>
+          <p><strong>State:</strong> ${item.state || "N/A"}</p>
+          <p><strong>Description:</strong> ${item.description || "No description available"}</p>
+          <p><strong>Type:</strong> ${item.type || "N/A"}</p>
+          <p><strong>Full Address:</strong> ${item.full_address || "N/A"}</p>
+          <p><strong>Phone Number:</strong> ${item.phone_number || "N/A"}</p>
+          <p><strong>Business Hours:</strong> ${item.business_hours || "N/A"}</p>
+        `;
+
+        // Append the new result item div to the results container
+        resultsDiv.appendChild(resultItemDiv);
+      });
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching data:", error);
       resultsDiv.innerHTML = `<p>Error fetching data. Please try again later.</p>`;
     }
   });

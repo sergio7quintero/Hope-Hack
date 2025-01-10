@@ -71,7 +71,7 @@ app.get("/api/data", (req, res) => {
 
 app.get("/api/resources", async (req, res) => {
   const { city, state } = req.query; // e.g., "Charlotte, NC"
-  console.log(city, state);
+  // console.log(city, state);
   // fetchData();
   if (!city || !state) {
     return res.status(400).json({ error: "City and state are required." });
