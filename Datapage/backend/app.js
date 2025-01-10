@@ -11,7 +11,7 @@ const { engine } = require("express-handlebars");
 
 const app = express();
 app.use(cors());
-app.use(express.static("../frontend/public"));
+app.use(express.static("frontend/public"));
 
 //Sets our app to use the handlebars engine
 // app.set("view engine", "hbs");
