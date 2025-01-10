@@ -99,6 +99,10 @@ color: #f5f5f5;
 border-radius: 10px;
 cursor: pointer;
 }
+input #lastName{
+    width: 424px;
+    height: 36px;
+}
 .loginform .form .form-element a{
 display: block;
 text-align: right;
@@ -133,7 +137,8 @@ font-weight: 600;
     left: 50%;
     opacity: 0;
     transform: translate(-50%,-50%)scale(1.5);
-    width: 380px;
+    width: 480px;
+    height: 600px;
     padding: 20px 30px;
     background: #fff;
     box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.15);
