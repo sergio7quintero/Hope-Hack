@@ -1,11 +1,13 @@
 const express= require('express');
 const app =express();
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3000;
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const connection =require('./db');
 const bcrypt = require('bcryptjs');
 const path = require('path');
+const { error } = require('console');
+const endcoder = bodyParser.urlencoded();
 
 
 
@@ -14,8 +16,11 @@ dotenv.config();
 //create post request for register route
 
 app.use(express.static((path.join(__dirname,'frontEnd'))))
-// app.use(express.static("frontEnd"));
+app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json())
+
+
+
 app.post('/register', async (req, res) => {
   try {
     const { firstName, lastName, email, password } = req.body;
@@ -46,72 +51,32 @@ app.post('/register', async (req, res) => {
   }
 });
 
-// app.post('/register',async (req,res)=> {
-//     // console.log(req.body.firstName);
-//     const {firstName, lastName, email, password} = req.body;
-//     const hashedpassword = await bcrypt.hash(password,10)
-  
-//     connection 
-// .promise() 
 
-// .query(
-//     'INSERT INTO signup (firstName, lastName, email, password) VALUES (?, ?, ?, ?)',
-//     [ firstName, lastName, email, hashedpassword]
-
-// );
-// });
 // // login validating
 
-app.post('/login', async (req, res) => {
-  const { email, password } = req.body;
 
-  try {
-    // Check the database for the user
-    const [results] = await connection
-      .promise()
-      .query('SELECT * FROM signup WHERE email = ? AND password = ?', [email, password]);
+app.post('/',endcoder, (req,res)=>{
+  const email = req.body.email;
+  const password = req.body.password;
 
-    if (results.length === 0) {
-      // User not found
-      return res.status(400).send('Invalid email or password');
-    }
 
-    const user = results[0];
+  connection.query('select * from user where email = ? and password = ? ',[email,password], (error,results,fields) => {
+      if(results.length > 0){
+          
+          const name = results[0].firstName;
+          res.send(`Welcome ${name}`) }  //alter to create user dashboard popup
+      else {
+          res.send('Invalid email or password')
+      }
 
-    // Compare the provided password with the stored hashed password
-    const isMatch = await bcrypt.compare(password, user.password);
 
-    if (!isMatch) {
-      // Passwords don't match
-      return res.status(400).send('Invalid email or password');
-    }
-
-    // Successful login
-    res.status(200).send('Login successful');
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Internal Server Error');
-  }
-});
-        // // Encrypt the password
-        // bcrypt.hash(password, 10, (err, hashedPassword) => {
-        //   if (err) {
-        //     console.error(err);
-        //     return res.status(500).send('Internal Server Error');
-        //   }
-  
-          // Update user in the database
-          // connection.query('UPDATE Users SET Username = ?, Password = ? WHERE ID = ?', [username, hashedPassword, userId], (err, results) => {
-          //   if (err) {
-          //     console.error(err);
-          //     return res.status(500).send('Internal Server Error');
-          //   }
-  
-            // return req.redirect('/login');
-          // });
-        // });
-      
-      
+      if(error){
+          console.log(error);
+          return res.status(500).send('Internal server error')
+      }; 
+      res.end()
+  })
+})
 
 
 
@@ -146,4 +111,4 @@ app.listen(PORT,()=>{
     console.log(`server is running on port ${PORT}`)
 });
 
-console.log(path.join(__dirname, 'frontEnd','Datapage', 'data.html'))
+// console.log(path.join(__dirname, 'frontEnd','Datapage', 'data.html')); 

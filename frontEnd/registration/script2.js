@@ -18,7 +18,7 @@ registerSubmitButton.addEventListener('click', async e => {
   const lastName = document.querySelector('#lastname').value;
   const email = document.querySelector('#email').value;
   const password = document.querySelector('#password').value;
-console.log({firstName, lastName, email, password})
+console.log({firstName, lastName, email, password});
   try {
     const response = await fetch(`${API_URL}register`, {
       method: 'POST',
@@ -78,7 +78,7 @@ function showDashboard(token) {
   
   const decodedToken = JSON.parse(atob(token.split('.')[1]));
   //token.split to extract payload of jwt
-  //pasringing into JSON
+  //parsing into JSON
   welcomeMessage.textContent = `Welcome, ${decodedToken.firstName} ${decodedToken.lastName}!`;
   dashboardSection.style.display = 'block';
   loginForm.style.display = 'none';
@@ -99,4 +99,11 @@ function showDashboard(token) {
   dashboard.textContent = firstNmaeLoggedIN
 
 */
+
+///login validation
+
+
+
+
+
 console.log('Token:', token);
